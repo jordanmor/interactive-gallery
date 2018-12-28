@@ -11,6 +11,7 @@ const Gallery = () => {
         return (
           <div >
             <ul className="photo-container">
+              <li className="photo-title">Transform Gallery</li>
               {images.map(image => 
                 <GalleryItem 
                   key={image.id} 

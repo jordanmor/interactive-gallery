@@ -2,13 +2,11 @@ import React from 'react';
 
 const GalleryItem = ({ image }) => {
 
+  const backgroundImage = `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
+  const styles = { backgroundImage: `url(${backgroundImage})`};
+
   return (
-    <li>
-      <img 
-        src={`https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`}
-        alt={image.title} 
-      />
-    </li>
+    <li style={styles}></li>
    );
 }
  

@@ -9,8 +9,8 @@ const Gallery = () => {
     <Consumer>
       {({ images }) => {
         return (
-          <div className="photo-container">
-            <ul>
+          <div >
+            <ul className="photo-container">
               {images.map(image => 
                 <GalleryItem 
                   key={image.id} 

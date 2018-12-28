@@ -38,12 +38,43 @@ img {
   border-radius: 10px;
 }
 
-.photo-title {
+.photo-header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.photo-header span {
   font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.photo-header form {
+  display: flex;
+  align-items: center;
+}
+
+.photo-header .search-input {
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: .35rem;
+  outline: 0;
+}
+
+.photo-header .search-input:focus {
+  border-color: #333;
+}
+
+.photo-header .submit-btn {
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
 }
 
 @media (min-width: 741px ) {
@@ -71,7 +102,7 @@ img {
     grid-column: 2 / 4;
     grid-row: 2 / 3;
   }
-  .photo-title {
+  .photo-header span {
     font-size: 2.4rem;
   }
 }

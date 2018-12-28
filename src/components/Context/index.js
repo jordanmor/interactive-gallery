@@ -19,10 +19,17 @@ export class Provider extends Component {
     this.setState({ images });
   }
 
+  performSearch = input => {
+    this.getImages(input);
+  }
+
   render() { 
     return ( 
       <GalleryContext.Provider value={{
-        images: this.state.images
+        images: this.state.images,
+        actions: {
+          performSearch: this.performSearch
+        }
       }}>
       { this.props.children }
       </GalleryContext.Provider>

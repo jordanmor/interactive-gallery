@@ -10,8 +10,8 @@ const Gallery = () => {
     <Consumer>
       {({ images }) => {
         return (
-          <div >
-            <ul className="photo-container">
+          <div className="content">
+            <ul className="photo-list">
               <li className="photo-header">
                 <span>Transform Gallery</span>
                 <Search />

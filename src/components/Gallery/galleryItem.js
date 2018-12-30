@@ -6,7 +6,9 @@ const GalleryItem = ({ image }) => {
   const styles = { backgroundImage: `url(${backgroundImage})`};
 
   return (
-    <li style={styles}></li>
+    <li className="photo-container">
+      <div className="photo" style={styles}> </div>
+    </li>
    );
 }
  

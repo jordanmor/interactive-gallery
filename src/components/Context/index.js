@@ -15,7 +15,7 @@ export class Provider extends Component {
   getImages = async(tag) => {
     const apiKey = process.env.REACT_APP_FLICKR_APIKEY;
     const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tag}&per_page=14&format=json&nojsoncallback=1`);
-    const images = data.photos.photo.slice(0, 11);
+    const images = data.photos.photo.slice(0, 10);
     this.setState({ images });
   }
 

@@ -105,6 +105,10 @@ img {
     grid-column: 2 / 3;
     grid-row: 2 / 4;
   }
+  .photo-header {
+    border: 5px solid #333;
+    border-radius: 5px;
+  }
 }
 
 @media (min-width: 1101px) and (max-width: 1460px) {

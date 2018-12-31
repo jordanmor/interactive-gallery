@@ -10,18 +10,34 @@ export class Provider extends Component {
 
   componentDidMount() {
     this.getImages('dog');
-    this.getRandomWord();
+    this.createWordDataArray();
   }
 
-  getRandomWord = async() => {
+  getRandomWords = async() => {
     const wordnikApiKey = process.env.REACT_APP_WORDNIK_APIKEY;
     const response = await axios.get(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=5000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=-1&limit=10&api_key=${wordnikApiKey}`);
     if(response.status === 200) {
       const { data } = response;
-      console.log(data);
+      return data;
     } else {
       return;
     }
+  }
+
+  getRandomBgColor = () => {
+    const createRandomNum = num => Math.floor(Math.random() * num);
+    let r = createRandomNum(256), g = createRandomNum(256), b = createRandomNum(256);
+    const backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    return backgroundColor;
+  }
+
+  createWordDataArray = async() => {
+    const randomWords = await this.getRandomWords();
+    const wordDataArray = randomWords.map(data => {
+      return {id: data.id, word: data.word, bgColor: this.getRandomBgColor()};
+    });
+    console.log(wordDataArray);
+    return wordDataArray;
   }
 
   getImages = async(tag) => {

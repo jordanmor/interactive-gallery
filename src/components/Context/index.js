@@ -36,6 +36,10 @@ export class Provider extends Component {
     this.setState({ showImages: false });
   }
 
+  getNewTags = () => {
+    this.getRandomWords();
+  }
+
   performSearch = input => {
     this.getImages(input);
   }
@@ -49,7 +53,8 @@ export class Provider extends Component {
         actions: {
           performSearch: this.performSearch,
           getImages: this.getImages,
-          returnToTags: this.returnToTags
+          returnToTags: this.returnToTags,
+          getNewTags: this.getNewTags
         }
       }}>
       { this.props.children }

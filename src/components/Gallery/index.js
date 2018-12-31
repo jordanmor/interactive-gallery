@@ -18,11 +18,15 @@ const Gallery = () => {
                 <Search />
                 { context.showImages ?
                   <button 
-                    className="btn btn-return"
+                    className="btn btn-header"
                     onClick={context.actions.returnToTags}
                   >Return To Tags
                   </button>
-                : null
+                : <button 
+                    className="btn btn-header"
+                    onClick={context.actions.getNewTags}
+                  >More Topics
+                  </button>
                 }
               </li>
 

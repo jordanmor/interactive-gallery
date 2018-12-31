@@ -32,6 +32,10 @@ export class Provider extends Component {
     this.setState({ images, showImages: true });
   }
 
+  returnToTags = () => {
+    this.setState({ showImages: false });
+  }
+
   performSearch = input => {
     this.getImages(input);
   }
@@ -44,7 +48,8 @@ export class Provider extends Component {
         showImages: this.state.showImages,
         actions: {
           performSearch: this.performSearch,
-          getImages: this.getImages
+          getImages: this.getImages,
+          returnToTags: this.returnToTags
         }
       }}>
       { this.props.children }

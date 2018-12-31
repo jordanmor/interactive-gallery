@@ -16,7 +16,16 @@ const Gallery = () => {
               <li className="photo-header">
                 <span>Transform Gallery</span>
                 <Search />
+                { context.showImages ?
+                  <button 
+                    className="btn btn-return"
+                    onClick={context.actions.returnToTags}
+                  >Return To Tags
+                  </button>
+                : null
+                }
               </li>
+
               {context.showImages ?
                 context.images.map(image => 
                   <GalleryItem 

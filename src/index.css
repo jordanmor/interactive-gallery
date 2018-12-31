@@ -67,6 +67,7 @@ img {
 .photo-header form {
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .photo-header .search-input {
@@ -88,6 +89,12 @@ img {
   border-radius: 5px;
   background-color: #fff;
   color: #333;
+}
+
+.photo-header .btn-return {
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  border-radius: 5px;
 }
 
 .tag {

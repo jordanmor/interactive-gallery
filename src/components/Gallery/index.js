@@ -1,6 +1,7 @@
 import React from 'react';
 import { Consumer } from '../Context';
 import GalleryItem from './galleryItem';
+import Tag from './tag';
 import Search from './search';
 
 
@@ -8,7 +9,7 @@ const Gallery = () => {
 
   return (
     <Consumer>
-      {({ images }) => {
+      { context => {
         return (
           <div className="content">
             <ul className="photo-list">
@@ -16,12 +17,21 @@ const Gallery = () => {
                 <span>Transform Gallery</span>
                 <Search />
               </li>
-              {images.map(image => 
-                <GalleryItem 
-                  key={image.id} 
-                  image={image} 
-                /> 
-              )}
+              {context.showImages ?
+                context.images.map(image => 
+                  <GalleryItem 
+                    key={image.id} 
+                    image={image} 
+                  /> 
+                )
+              : context.tags.map( tag => 
+                  <Tag 
+                    key={tag.id}
+                    tag={tag.word}
+                    getImages={context.actions.getImages}
+                  />
+                )
+              }
             </ul>
           </div>
         );

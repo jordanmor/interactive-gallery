@@ -9,24 +9,23 @@ export class Provider extends Component {
   }
 
   componentDidMount() {
-    this.getImages();
+    this.getImages('dog');
+    this.getRandomWord();
   }
 
   getRandomWord = async() => {
     const wordnikApiKey = process.env.REACT_APP_WORDNIK_APIKEY;
-    const response = await axios.get(`https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=1000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=-1&api_key=${wordnikApiKey}`);
+    const response = await axios.get(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=5000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=-1&limit=10&api_key=${wordnikApiKey}`);
     if(response.status === 200) {
       const { data } = response;
-      return data.word;
+      console.log(data);
     } else {
       return;
     }
   }
 
-  getImages = async() => {
+  getImages = async(tag) => {
     const apiKey = process.env.REACT_APP_FLICKR_APIKEY;
-    const tag = await this.getRandomWord();
-    console.log(tag);
     const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tag}&per_page=14&format=json&nojsoncallback=1`);
     const images = data.photos.photo.slice(0, 10);
     this.setState({ images });

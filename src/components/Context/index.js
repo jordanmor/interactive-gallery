@@ -7,6 +7,7 @@ export class Provider extends Component {
   state = { 
     images: [],
     tags: [],
+    bgColor: 'bg-color-1',
     showImages: false
   }
 
@@ -27,7 +28,7 @@ export class Provider extends Component {
 
   getImages = async(tag) => {
     const apiKey = process.env.REACT_APP_FLICKR_APIKEY;
-    const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tag}&per_page=14&format=json&nojsoncallback=1`);
+    const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tag}&per_page=12&format=json&nojsoncallback=1`);
     const images = data.photos.photo.slice(0, 10);
     this.setState({ images, showImages: true });
   }
@@ -40,6 +41,10 @@ export class Provider extends Component {
     this.getRandomWords();
   }
 
+  changeBgColor = bgColor => {
+    this.setState({ bgColor });
+  }
+
   performSearch = input => {
     this.getImages(input);
   }
@@ -49,12 +54,14 @@ export class Provider extends Component {
       <GalleryContext.Provider value={{
         images: this.state.images,
         tags: this.state.tags,
+        bgColor: this.state.bgColor,
         showImages: this.state.showImages,
         actions: {
           performSearch: this.performSearch,
           getImages: this.getImages,
           returnToTags: this.returnToTags,
-          getNewTags: this.getNewTags
+          getNewTags: this.getNewTags,
+          changeBgColor: this.changeBgColor
         }
       }}>
       { this.props.children }

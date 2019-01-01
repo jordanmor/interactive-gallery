@@ -1,7 +1,6 @@
 import React from 'react';
 
-const GalleryItem = ({ image }) => {
-
+const Image = ({ image }) => {
   const backgroundImage = `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
   const styles = { backgroundImage: `url(${backgroundImage})`};
 
@@ -12,4 +11,4 @@ const GalleryItem = ({ image }) => {
    );
 }
  
-export default GalleryItem;
+export default Image;

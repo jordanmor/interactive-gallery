@@ -1,34 +1,31 @@
 import React from 'react';
-import { Consumer } from '../Context';
 import ColorPicker from '../common/colorPicker';
 
-const Buttons = () => {
+const Buttons = ({ classes, showImages, returnToTags, getNewTags }) => {
   return (
-    <Consumer>
-      { ({ showImages, actions }) => {
-          return ( 
-            <div className="btn-container">
+    <div className="btn-container">
 
-              { showImages ?
-                <button 
-                  className="btn btn-header"
-                  onClick={actions.returnToTags}
-                >Return To Tags
-                </button>
-              : <React.Fragment>
-                  <button 
-                    className="btn btn-header"
-                    onClick={actions.getNewTags}
-                  >More Topics
-                  </button>
-                  <ColorPicker />
-                </React.Fragment>
-              }
+      { showImages ?
 
-            </div>
-           );
-      }}
-    </Consumer>
+        <button 
+          className={`btn ${classes.btnColor}`}
+          onClick={returnToTags}
+        >Return To Tags
+        </button>
+
+      : <React.Fragment>
+          <button 
+            className={`btn ${classes.btnColor}`}
+            onClick={getNewTags}
+          >More Topics
+          </button>
+
+          <ColorPicker />
+
+        </React.Fragment>
+      }
+
+    </div>
   );
 }
  

@@ -7,7 +7,12 @@ export class Provider extends Component {
   state = { 
     images: [],
     tags: [],
-    bgColor: 'bg-color-1',
+    classes: {
+      bgColor: 'bg-color-1',
+      fontColor: 'font-color-1',
+      borderColor: 'border-color-1',
+      btnColor: 'btn-color-1'
+    },
     showImages: false
   }
 
@@ -41,8 +46,15 @@ export class Provider extends Component {
     this.getRandomWords();
   }
 
-  changeBgColor = bgColor => {
-    this.setState({ bgColor });
+  changeColorClasses = num => {
+    this.setState({ 
+      classes: {
+        bgColor: `bg-color-${num}`,
+        fontColor: `font-color-${num}`,
+        borderColor: `border-color-${num}`,
+        btnColor: `btn-color-${num}`
+      }, 
+    });
   }
 
   performSearch = input => {
@@ -54,14 +66,14 @@ export class Provider extends Component {
       <GalleryContext.Provider value={{
         images: this.state.images,
         tags: this.state.tags,
-        bgColor: this.state.bgColor,
+        classes: this.state.classes,
         showImages: this.state.showImages,
         actions: {
           performSearch: this.performSearch,
           getImages: this.getImages,
           returnToTags: this.returnToTags,
           getNewTags: this.getNewTags,
-          changeBgColor: this.changeBgColor
+          changeColorClasses: this.changeColorClasses
         }
       }}>
       { this.props.children }

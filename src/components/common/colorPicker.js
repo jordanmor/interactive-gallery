@@ -4,14 +4,14 @@ import { Consumer } from '../Context';
 const ColorPicker = () => {
   return ( 
     <Consumer>
-      { ({ actions }) => {
+      { ({ classes, actions }) => {
         return (
-          <div className="color-picker">
+          <div className={`color-picker ${classes.borderColor}`}>
             { ['1', '2', '3', '4', '5'].map( num =>
                 <button 
                   key={num}
-                  className={`btn-color bg-color-${num}`}
-                  onClick={() => actions.changeBgColor(`bg-color-${num}`)}
+                  className={`btn-theme bg-color-${num}`}
+                  onClick={() => actions.changeColorClasses(num)}
                 >
                 </button>
             )}

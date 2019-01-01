@@ -7,7 +7,7 @@ const GalleryItems = () => {
 
   return (
     <Consumer>
-      { ({ showImages, images, tags, bgColor, actions }) => {
+      { ({ showImages, images, tags, classes, actions }) => {
         return (
           showImages ?
             images.map(image => 
@@ -21,7 +21,7 @@ const GalleryItems = () => {
                 key={tag.id}
                 tag={tag.word}
                 getImages={actions.getImages}
-                bgColor={bgColor}
+                bgColor={classes.bgColor}
               />
             )
         );

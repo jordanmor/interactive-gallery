@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Consumer } from '../Context';
 
 class Search extends Component {
   state = { 
@@ -10,38 +9,34 @@ class Search extends Component {
     this.setState({ value: e.target.value });
   }
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.performSearch(this.state.value);
+    this.setState({value: ''});
+  }
+
   render() { 
 
-    return ( 
-      <Consumer>
-        { ({ actions }) => {
-          const handleSubmit = e => {
-            e.preventDefault();
-            actions.performSearch(this.state.value);
-            this.setState({value: ''});
-          }
+    const { borderColor, btnColor } = this.props.classes;
 
-          return (
-            <form onSubmit={handleSubmit}>
-              <input
-                className="search-input" 
-                type="text"
-                placeholder="Search..."
-                onChange={this.handleValueChange}
-                value={this.state.value}
-              />
-      
-              <button 
-                className="btn submit-btn"
-                type="submit"
-              >
-              Submit
-              </button>
-            </form>
-          );
-        }}
-      </Consumer>
-     );
+    return ( 
+      <form onSubmit={this.handleSubmit}>
+        <input
+          className={`search-input ${borderColor}`}
+          type="text"
+          placeholder="Search..."
+          onChange={this.handleValueChange}
+          value={this.state.value}
+        />
+
+        <button 
+          className={`btn submit-btn ${btnColor}`}
+          type="submit"
+        >
+        Submit
+        </button>
+      </form>
+    );
   }
 }
  

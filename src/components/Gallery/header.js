@@ -8,7 +8,7 @@ const Header = () => {
     <Consumer>
         {({ classes, showImages, actions }) => {
           return ( 
-            <li className="photo-header">
+            <li className={`photo-header ${classes.borderColor}`}>
               <span className={classes.fontColor}>Transform Gallery</span>
               <Search 
                 classes={classes}

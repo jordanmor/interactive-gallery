@@ -44,7 +44,7 @@ input {
   font-size: 1.2rem;
   background-color: var(--color-white);
   color: var(--color-primary);
-  border-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
   transition: all .3s ease-out;
 }
 
@@ -105,16 +105,13 @@ input {
 }
 
 .photo-header .search-input {
+  max-width: 200px;
   font-size: 1.2rem;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 5px;
   margin-right: .35rem;
   outline: none;
 }
-
-/* .photo-header .search-input:focus {
-  border-color: var(--color-primary);
-} */
 
 .photo-header .btn-container {
   display: flex;
@@ -282,8 +279,15 @@ input {
     grid-row: 2 / 4;
   }
   .photo-header {
-    border: 5px solid var(--color-primary);
+    border-style: solid;
+    border-width: 5px;
     border-radius: 5px;
+  }
+}
+
+@media (max-width: 1100px ) {
+  .photo-list .photo-header {
+    border: none;
   }
 }
 

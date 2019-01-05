@@ -1,3 +1,3 @@
-## Transform Gallery
+## Interactive Gallery
 
-An interactive image gallery built using React, CSS Grid, Flexbox, transitions and transforms and utilizing the Flickr API.
+An interactive image gallery built with a responsive design approach, using React, CSS Grid & Flexbox, and utilizing Flickr's and Wordnik's APIs.

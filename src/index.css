@@ -117,6 +117,10 @@ input {
   display: flex;
 }
 
+.title {
+  text-transform: capitalize;
+}
+
 .tag {
   display: flex;
   justify-content: center;

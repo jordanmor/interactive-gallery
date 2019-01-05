@@ -7,6 +7,7 @@ export class Provider extends Component {
   state = { 
     images: [],
     tags: [],
+    title: 'Interactive Gallery',
     classes: {
       bgColor: 'bg-color-1',
       fontColor: 'font-color-1',
@@ -38,11 +39,18 @@ export class Provider extends Component {
     const apiKey = process.env.REACT_APP_FLICKR_APIKEY;
     const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${tag}&sort=relevance&safe_search=1&per_page=10&format=json&nojsoncallback=1`);
     const images = data.photos.photo.slice(0, 10);
-    this.setState({ images, showImages: true });
+    this.setState({ 
+      images, 
+      showImages: true,
+      title: tag
+    });
   }
 
   returnToTags = () => {
-    this.setState({ showImages: false });
+    this.setState({ 
+      showImages: false,
+      title: 'Interactive Gallery'
+    });
   }
 
   getNewTags = async () => {
@@ -69,6 +77,7 @@ export class Provider extends Component {
       <GalleryContext.Provider value={{
         images: this.state.images,
         tags: this.state.tags,
+        title: this.state.title,
         classes: this.state.classes,
         showImages: this.state.showImages,
         loading: this.state.loading,

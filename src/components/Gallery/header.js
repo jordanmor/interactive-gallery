@@ -6,10 +6,10 @@ import Search from './search';
 const Header = () => {
   return (
     <Consumer>
-        {({ classes, showImages, actions }) => {
+        {({ title, classes, showImages, actions }) => {
           return ( 
             <li className={`photo-header ${classes.borderColor}`}>
-              <span className={classes.fontColor}>Interactive Gallery</span>
+              <span className={`title ${classes.fontColor}`}>{title}</span>
               <Search 
                 classes={classes}
                 performSearch={actions.performSearch}

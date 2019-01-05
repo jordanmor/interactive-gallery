@@ -9,7 +9,7 @@ const Header = () => {
         {({ classes, showImages, actions }) => {
           return ( 
             <li className={`photo-header ${classes.borderColor}`}>
-              <span className={classes.fontColor}>Transform Gallery</span>
+              <span className={classes.fontColor}>Interactive Gallery</span>
               <Search 
                 classes={classes}
                 performSearch={actions.performSearch}

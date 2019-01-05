@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Consumer } from './Context';
 import Gallery from './Gallery';
+import Loader from './common/loader';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <Gallery />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <Consumer>
+      {({ loading }) =>  {
+        return (
+          <div className="container">
+            { loading
+              ?
+                <Loader />
+              :
+                <Gallery />
+            }
+          </div>
+        );
+      }}
+    </Consumer>
+  );
 }
 
 export default App;

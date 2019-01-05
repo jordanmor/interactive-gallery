@@ -13,11 +13,14 @@ export class Provider extends Component {
       borderColor: 'border-color-1',
       btnColor: 'btn-color-1'
     },
-    showImages: false
+    showImages: false,
+    loading: false
   }
 
-  componentDidMount() {
-    this.getRandomWords();
+  async componentDidMount() {
+    this.setState({ loading: true });
+    await this.getRandomWords();
+    this.setState({ loading: false });
   }
 
   getRandomWords = async() => {
@@ -33,7 +36,7 @@ export class Provider extends Component {
 
   getImages = async(tag) => {
     const apiKey = process.env.REACT_APP_FLICKR_APIKEY;
-    const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${tag}&sort=relevance&safe_search=1&per_page=12&format=json&nojsoncallback=1`);
+    const { data } = await axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${tag}&sort=relevance&safe_search=1&per_page=10&format=json&nojsoncallback=1`);
     const images = data.photos.photo.slice(0, 10);
     this.setState({ images, showImages: true });
   }
@@ -42,7 +45,7 @@ export class Provider extends Component {
     this.setState({ showImages: false });
   }
 
-  getNewTags = () => {
+  getNewTags = async () => {
     this.getRandomWords();
   }
 
@@ -68,6 +71,7 @@ export class Provider extends Component {
         tags: this.state.tags,
         classes: this.state.classes,
         showImages: this.state.showImages,
+        loading: this.state.loading,
         actions: {
           performSearch: this.performSearch,
           getImages: this.getImages,

@@ -10,7 +10,7 @@ const Buttons = ({ classes, showImages, returnToTags, getNewTags }) => {
         <button 
           className={`btn ${classes.btnColor}`}
           onClick={returnToTags}
-        >Return To Tags
+        >Return To Topics
         </button>
 
       : <React.Fragment>
